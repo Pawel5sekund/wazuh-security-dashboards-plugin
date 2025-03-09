@@ -28,7 +28,7 @@ jobs:
     uses: ./.github/workflows/dev-environment.yml
     with:
       reference: ${{ inputs.reference }}
-      command: 'yarn build'
+      command: 'yarn config set network-timeout 600000 -g && yarn build'
       artifact_name: 'wazuh-security-dashboards-plugin'
       artifact_path: './wazuh-security-plugin/build'
     secrets: inherit
