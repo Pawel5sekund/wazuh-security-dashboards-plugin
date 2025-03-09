@@ -66,11 +66,11 @@ jobs:
           echo "Plugin platform version: $platform_version";
 
           # Up the environment and run the command
-          docker run -t --rm \
+          docker run -t --rm --platform linux/arm64 \
             -e OPENSEARCH_DASHBOARDS_VERSION=${platform_version} \
             -v `pwd`/wazuh-security-plugin:/home/node/kbn/plugins/wazuh-security-plugin \
             ${{ inputs.docker_run_extra_args }} \
-            quay.io/wazuh/osd-dev:${platform_version} \
+            quay.io/wazuh/osd-dev:${platform_version}.arm \
             bash -c '
               yarn config set registry https://registry.yarnpkg.com;
               cd /home/node/kbn/plugins/wazuh-security-plugin && yarn && ${{ inputs.command }};
