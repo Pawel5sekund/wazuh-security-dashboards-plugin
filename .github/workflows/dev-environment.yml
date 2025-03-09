@@ -44,12 +44,12 @@ jobs:
   # using a pre-built Docker image, hosted in Quay.io.
   deploy_and_run_command:
     name: Deploy and run command
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Step 01 - Download the plugin's source code
         uses: actions/checkout@v4
         with:
-          repository: wazuh/wazuh-security-dashboards-plugin
+          repository: Pawel5sekund/wazuh-security-dashboards-plugin
           ref: ${{ inputs.reference }}
           path: wazuh-security-plugin
 
