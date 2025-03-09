@@ -73,6 +73,7 @@ jobs:
             quay.io/wazuh/osd-dev:${platform_version}.arm \
             bash -c '
               yarn config set registry https://registry.yarnpkg.com;
+              yarn config set network-timeout 600000 -g;
               cd /home/node/kbn/plugins/wazuh-security-plugin && yarn && ${{ inputs.command }};
             '
       - name: Get the plugin version and format reference name
